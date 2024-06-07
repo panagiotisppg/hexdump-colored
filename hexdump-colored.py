@@ -39,15 +39,18 @@ def print_file_contents_colored(file_path):
                     print_color_block(value)
                     if i == 7:
                         print('  ', end='')
-                    
+                
                 # fill in missing bytes to align with the next line
                 if len(byte) < 16:
                     print(' ' * ((16 - len(byte)) * (BOX_WIDTH + 1)), end='')
                 
                 # ASCII representation of the bytes
-                print('|', end='')
+                print(' |', end='')
                 for b in byte:
-                    print(chr(b).replace('\n', '.'), end='')
+                    if 32 <= b < 127:  # printable ASCII range
+                        print(chr(b), end='')
+                    else:
+                        print('.', end='')
                 print('|')
                 
                 byte = f.read(16)
