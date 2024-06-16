@@ -42,7 +42,7 @@ def print_file_contents_colored(file_path):
                 
                 # fill in missing bytes to align with the next line
                 if len(byte) < 16:
-                    print(' ' * ((16 - len(byte)) * (BOX_WIDTH + 1)), end='')
+                    print("    "*(15-i)+'  ', end = '')
                 
                 # ASCII representation of the bytes
                 print(' |', end='')
